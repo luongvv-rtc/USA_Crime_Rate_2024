@@ -1,7 +1,3 @@
-# CNE 340 - Network Databases and Structured Query Language (SQL)
-# Winter 2024
-# Group project name: USA Crime Rate 2024
-# Project members: Tyler Sabin, Van Vuong
 
 # Import section
 import pandas as pd
