@@ -5,7 +5,7 @@
 # https://rtc.instructure.com/courses/2439016/files/236685445?module_item_id=79735228
 # further instructions from instructor
 # source Tyler Sabin
-# source Van Luong Voung
+# source Van Luong Vuong
 # source Ix Procopios
 
 
