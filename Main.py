@@ -45,14 +45,15 @@ num_states = len(top_3_states)
 colors = cm.rainbow(np.linspace(0, 1, num_states))  # module method seems to work
 
 # plotting figure and using enumerate to add a counter i and zip to make two column tuple
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(6, 6))
+bar_width = 0.25
 for i, (state, crime_rate) in enumerate(zip(top_3_states['state'], top_3_states['CrimeViolentRate'])):
-    plt.bar(state, crime_rate, color=colors[i], edgecolor='black')
-    plt.text(state, crime_rate, str(round(crime_rate, 2)), ha='center', va='bottom')  # adding text to the top of bar
+    plt.bar(state, crime_rate, color=colors[i], edgecolor='black', width=bar_width)
+    plt.text(state, crime_rate, str(round(crime_rate, 2)), ha='center', va='bottom', fontweight='bold')  # adding text to the top of bar
 
-plt.title('Top 3 states or districts Crime Violence Rate per 100,000 population in 2024')
-plt.xlabel('50 States and D.C')
-plt.ylabel('Crime Violent Rate per 100,000 population')
+plt.title('Top 3 states or districts Crime Violence Rate \nper 100,000 population in 2024', fontweight='bold')
+plt.xlabel('50 States and D.C', fontweight='bold')
+plt.ylabel('Crime Violent Rate per 100,000 population', fontweight='bold')
 
 # Plot chart including all states' rate and the Average rate
 # Plot all states' rate chart, Van
@@ -125,4 +126,3 @@ plt.show()
 
 # close connection made by engine
 engine.dispose()
-print(f"DataFrame successfully sent to the '{table_name}' table in the '{dbname}' database.")
