@@ -91,7 +91,7 @@ plt.figure(figsize=(6, 6))
 # # Plot the bar chart
 bar_colors = ['blue', 'orange', 'green']
 bar_width=0.25
-plt.bar(low_3_states, low_3_crime_violent_rate, width=bar_width, color=bar_colors)
+plt.bar(low_3_states, low_3_crime_violent_rate, width=bar_width, color=bar_colors, edgecolor='black')
 # Add values on top of each bar
 for i in range(len(low_3_states)):
      plt.text(low_3_states[i], low_3_crime_violent_rate[i], str(low_3_crime_violent_rate[i]), ha='center', va='bottom', fontweight='bold')
@@ -112,7 +112,7 @@ all_state, all_state_Crime_Violent_Rate = sort_all_states(table_name, engine)
 
 plt.figure(figsize=(12, 6))
 all_states_bar_colors = np.random.rand(len(all_state), 3)
-plt.bar(all_state, all_state_Crime_Violent_Rate, color=all_states_bar_colors)
+plt.bar(all_state, all_state_Crime_Violent_Rate, color=all_states_bar_colors, edgecolor='black')
 plt.axhline(avg_crime_rate, color='red', linestyle='--', linewidth=2)
 plt.text(+44, avg_crime_rate, f'Average Rate: {avg_crime_rate:.2f}', color='red', fontsize=10, fontweight='bold')
 
