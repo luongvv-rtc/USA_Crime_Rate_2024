@@ -5,7 +5,7 @@
 # https://rtc.instructure.com/courses/2439016/files/236685445?module_item_id=79735228
 # further instructions from instructor
 # source Tyler Sabin
-# source Van Loung Voung
+# source Van Luong Vuong
 # source Ix Procopios
 
 
@@ -23,15 +23,15 @@ uname = 'root'
 pwd = ''
 dbname = 'USA_Crime_Rate_2024'
 
-# connect to MySQL on LAMP Server
+# connect to MySQL on W/LAMP Server
 connection_string = f"mysql+pymysql://{uname}:{pwd}@{hostname}/{dbname}"
 engine = create_engine(connection_string)
 
-# todo Python code pulls data from a data source and puts data into Database
+# opens csv file from GitHub Project Folder
 with open('crime-rate-by-state-2024.csv') as file_path:
     df = pd.read_csv(file_path)
 
-# we need to pick a new table name.
+# table name
 table_name = '50_states_and_dc_crime_statistics'  # 'CrimeRate', a column name in csv file, not table name applicable
 df.to_sql(table_name, engine, if_exists='replace', index=False)
 
@@ -55,13 +55,11 @@ plt.title('Top 3 states or districts Crime Violence Rate \nper 100,000 populatio
 plt.xlabel('50 States and D.C', fontweight='bold')
 plt.ylabel('Crime Violent Rate per 100,000 population', fontweight='bold')
 
-# Plot chart including all states' rate and the Average rate
-# Plot all states' rate chart, Van
 
-# Plot Average rate chart, Tyler
+# calculate average rate
 avg_crime_rate = db_sorted['CrimeViolentRate'].mean()
 
-
+# def sorting all states
 def sort_all_states(table, engine):
     df = pd.read_sql_table(table, con=engine)
     all_states = df.sort_values(by='state')
@@ -78,10 +76,9 @@ def three_lowest_state(table, engine):
     return states, crime_rates
 
 
-# sort bottom 3, Van
+# graph 2
 low_3_states, low_3_crime_violent_rate = three_lowest_state(table_name, engine)
 
-# plot graph 2, Van
 # defined figure size
 plt.figure(figsize=(6, 6))
 
@@ -100,11 +97,6 @@ plt.tight_layout()
 
 
 # Plot chart including all states' rate and the Average rate
-
-# Plot Average rate chart, Tyler
-avg_crime_rate = db_sorted['CrimeViolentRate'].mean()
-
-# Plot all states' rate chart, Van
 all_state, all_state_Crime_Violent_Rate = sort_all_states(table_name, engine)
 
 plt.figure(figsize=(12, 6))
@@ -113,16 +105,16 @@ plt.bar(all_state, all_state_Crime_Violent_Rate, color=all_states_bar_colors, ed
 plt.axhline(avg_crime_rate, color='red', linestyle='--', linewidth=2)
 plt.text(+44, avg_crime_rate, f'Average Rate: {avg_crime_rate:.2f}', color='red', fontsize=10, fontweight='bold')
 
-#Add title and label
+# adding title and label
 plt.title('All State and D.C. Crime Violence Rate per 100,000 population in 2024', fontweight='bold')
 plt.xlabel('All 50 States or District of Columbia', fontweight='bold')
 plt.ylabel('Crime Violent Rate per 100,000 population', fontweight='bold')
-plt.xticks(rotation=90)  # 90 needed to read, 0 degrees might also work
+plt.xticks(rotation=90)
 plt.tight_layout()
 
 # plot only once at the end to show all plots
 plt.show()
-# manually hit x in figures upper right corner to close and each figure and complete code
+print("Manually hit x in figures upper right corner to close and each figure and complete code")
 
 # close connection made by engine
 engine.dispose()
