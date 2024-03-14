@@ -46,7 +46,7 @@ with open('crime-rate-by-state-2024.csv') as file_path:
     df = pd.read_csv(file_path)
 
 # we need to pick a new table name.
-table_name = 'test_table_name' # 'CrimeRate' is a column name in csv file so the table name must be different
+table_name = '50_states_and_dc_crime_statistics' # 'CrimeRate' is a column name in csv file so the table name must be different
 df.to_sql(table_name, engine, if_exists='replace', index=False)
 
 # todo Python code pulls data from database and analyzes analytics
