@@ -5,16 +5,16 @@
 # https://rtc.instructure.com/courses/2439016/files/236685445?module_item_id=79735228
 # further instructions from instructor
 # source Tyler Sabin
-# source Van oung Voung
+# source Van Luong Vuong
 # source Ix Procopios
 
 
 # Import section
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt, cm
 from sqlalchemy import create_engine
-import matplotlib.cm as cm
+
 
 def sort_all_states(table, engine):
     df = pd.read_sql_table(table, con=engine)
